@@ -8,8 +8,6 @@ var openDyslexic = {
   }
 };
 
-openDyslexic.Init();
-
 function checkStatus() {
   chrome.storage.sync.get({
     enabled: false
@@ -26,7 +24,8 @@ function disableOpenDyslexic() {
   if (document.getElementById('opendyslexic') != null) {
     // available
     elem = document.getElementById('opendyslexic');
-    elem.parentNode.removeChild(elem);(document.head || document.documentElement).removeChild(elem);
+    elem.parentNode.removeChild(elem);
+    (document.head || document.documentElement).removeChild(elem);
     reloadPage();
   }
 }
@@ -36,7 +35,8 @@ function enableOpenDyslexic() {
   style.rel = 'stylesheet';
   style.type = 'text/css';
   style.setAttribute('id', 'opendyslexic');
-  style.href = chrome.extension.getURL('styles/accesibility.css');(document.head || document.documentElement).appendChild(style);
+  style.href = chrome.extension.getURL('styles/accesibility.css');
+  (document.head || document.documentElement).appendChild(style);
 }
 
 function reloadPage() {
@@ -52,3 +52,5 @@ function reloadPage() {
     });
   });
 }
+
+openDyslexic.Init();
